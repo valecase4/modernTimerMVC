@@ -18,11 +18,16 @@ class Model:
     def add_time(self, seconds) -> None:
         self.seconds += seconds
 
-    def get_current_time(self) -> int:
+    def get_current_seconds(self) -> int:
         return self.seconds
 
-    def converter(self, seconds) -> str:
-        pass
+    def converter(self) -> str:
+        '''seconds = self.get_current_seconds()
+
+        hours = seconds / 3600
+
+        if (seconds % 3600) != 0:
+            minutes = '''
 
 class View(Tk):
     """
@@ -71,7 +76,7 @@ class Controller:
         print(self.model)
 
     def get_current_time(self) -> None:
-        current_time = self.model.get_current_time()
+        current_time = self.model.get_current_seconds()
 
         return current_time
 
@@ -80,4 +85,24 @@ class Controller:
 
         self.view.timer.configure(text=current_time)
 
-       
+
+def converter(total_seconds) -> str:
+    hours = int(total_seconds / 3600)
+    minutes = 0
+    seconds = 0
+
+    hours_remainder = total_seconds % 3600
+
+    if hours_remainder != 0:
+        minutes = int(hours_remainder / 60)
+
+        minutes_remainder = hours_remainder % 60
+
+        if minutes_remainder != 0:
+            seconds = minutes_remainder
+
+    hours = f"0{hours}" if len(str(hours)) == 1 else f"{hours}"
+    minutes = f"0{minutes}" if len(str(minutes)) == 1 else f"{minutes}"
+    seconds = f"0{seconds}" if len(str(seconds)) == 1 else f"{seconds}"
+
+    return f"{hours}:{minutes}:{seconds}"
