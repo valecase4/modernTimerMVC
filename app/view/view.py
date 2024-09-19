@@ -1,9 +1,6 @@
 from tkinter import *
 from .buttons.minutesBtn import MinutesBtn
 
-minutes_btns_text = ["1 mins", "5 mins", "10 mins", "20 mins", "60 mins"]
-minutes_btns_values = [60, 300, 600, 1200, 3600]
-
 class View(Tk):
     """
     View
@@ -13,7 +10,6 @@ class View(Tk):
         super().__init__()
 
         self.controller = controller
-        self.after_id = None
 
         self.configure(
             bg="#ffffff",
@@ -27,16 +23,32 @@ class View(Tk):
         self.grid_rowconfigure(1, weight=1)
         self.grid_rowconfigure(2, weight=1)
 
-        for i in range(5):
-            self.btn = MinutesBtn(self, self.controller, minutes_btns_text[i], minutes_btns_values[i])
-            self.grid_columnconfigure(i, weight=1)
-            self.btn.grid(row=0, column=i)
+        self.one_min_btn = MinutesBtn(self, self.controller, "1 mins", 60) 
+        self.one_min_btn.grid(row=0, column=0)
 
-        self.start_btn = Button(self, text="START", font=("Arial", 30), command=self.controller.start_countdown)
+        self.five_min_btn = MinutesBtn(self, self.controller, "5 mins", 300) 
+        self.five_min_btn.grid(row=0, column=1)
+
+        self.ten_min_btn = MinutesBtn(self, self.controller, "10 mins", 600) 
+        self.ten_min_btn.grid(row=0, column=2)
+
+        self.twenty_min_btn = MinutesBtn(self, self.controller, "20 mins", 1200) 
+        self.twenty_min_btn.grid(row=0, column=3)
+
+        self.sixty_min_btn = MinutesBtn(self, self.controller, "60 mins", 3600) 
+        self.sixty_min_btn.grid(row=0, column=4)
+
+        self.start_btn = Button(self, text="START", font=("Arial", 30))
+        self.start_btn.configure(command=self.controller.on_click_start_btn)
         self.start_btn.grid(row=1, column=0, columnspan=5)
 
-        self.timer = Label(self, text=self.controller.get_seconds(), bg="#ffffff", font=("Arial", 40))
-        self.timer.grid(row=2, column=0, columnspan=5)
+        self.reset_btn = Button(self, text="RESET", font=("Arial", 30), bg="red", fg="#ffffff")
+        self.reset_btn.configure(command=self.controller.on_click_reset_btn)
+        self.reset_btn.grid(row=2, column=0, columnspan=5)
+
+        self.timer = Label(self, text="", font=("Arial", 30), bg="#ffffff")
+        self.timer.grid(row=3, column=0, columnspan=5)
+
 
 
 

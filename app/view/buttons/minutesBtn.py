@@ -23,3 +23,10 @@ class MinutesBtn(Button):
             cursor="hand2",
             command=lambda : self.controller.on_click_minutes_btn(self.value)
         )
+
+    def disable(self):
+        self.configure(
+            bg="gray",
+            fg="#000000",
+            state="disabled"
+        )
