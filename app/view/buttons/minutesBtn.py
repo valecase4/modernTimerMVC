@@ -30,3 +30,10 @@ class MinutesBtn(Button):
             fg="#000000",
             state="disabled"
         )
+
+    def enable(self):
+        self.configure(
+            bg="#e3e3e3",
+            fg="#ffffff",
+            state="normal"
+        )

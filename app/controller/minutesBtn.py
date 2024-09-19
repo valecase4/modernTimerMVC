@@ -8,5 +8,14 @@ class minutesBtnController:
 
         print(self.model)
 
+    def enable(self):
+        for btn in self.view.minutes_btns:
+            btn.enable()
+
+    def disable(self):
+        for btn in self.view.minutes_btns:
+            btn.disable()
+
+
 
     

@@ -37,15 +37,25 @@ class View(Tk):
         self.sixty_min_btn = MinutesBtn(self, self.controller, "60 mins", 3600) 
         self.sixty_min_btn.grid(row=0, column=4)
 
+        self.minutes_btns = [self.one_min_btn, 
+                             self.five_min_btn, 
+                             self.ten_min_btn, 
+                             self.twenty_min_btn, 
+                             self.sixty_min_btn]
+
         self.start_btn = Button(self, text="START", font=("Arial", 30))
         self.start_btn.configure(command=self.controller.on_click_start_btn)
-        self.start_btn.grid(row=1, column=0, columnspan=5)
+        self.start_btn.grid(row=1, column=1)
+
+        self.pause_btn = Button(self, text="PAUSE", bg="orange", fg="#ffffff", font=("Arial", 30))
+        self.pause_btn.configure(command=self.controller.on_click_pause_btn)
+        self.pause_btn.grid(row=1, column=3)
 
         self.reset_btn = Button(self, text="RESET", font=("Arial", 30), bg="red", fg="#ffffff")
         self.reset_btn.configure(command=self.controller.on_click_reset_btn)
         self.reset_btn.grid(row=2, column=0, columnspan=5)
 
-        self.timer = Label(self, text="00:00", font=("Arial", 30), bg="#ffffff")
+        self.timer = Label(self, text=self.controller.model.seconds, font=("Arial", 30), bg="#ffffff")
         self.timer.grid(row=3, column=0, columnspan=5)
 
 
