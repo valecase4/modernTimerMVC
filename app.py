@@ -6,7 +6,7 @@ class Model:
     """
 
     def __init__(self) -> None:
-        self.seconds = 400
+        self.seconds = 0
     
     def __repr__(self) -> str:
         """
@@ -22,13 +22,28 @@ class Model:
         return self.seconds
 
     def converter(self) -> str:
-        '''seconds = self.get_current_seconds()
+        total_seconds = self.get_current_seconds()
 
-        hours = seconds / 3600
+        hours = int(total_seconds / 3600)
+        minutes = 0
+        seconds = 0
 
-        if (seconds % 3600) != 0:
-            minutes = '''
+        hours_remainder = total_seconds % 3600
 
+        if hours_remainder != 0:
+            minutes = int(hours_remainder / 60)
+
+            minutes_remainder = hours_remainder % 60
+
+            if minutes_remainder != 0:
+                seconds = minutes_remainder
+
+        hours = f"0{hours}" if len(str(hours)) == 1 else f"{hours}"
+        minutes = f"0{minutes}" if len(str(minutes)) == 1 else f"{minutes}"
+        seconds = f"0{seconds}" if len(str(seconds)) == 1 else f"{seconds}"
+
+        return f"{hours}:{minutes}:{seconds}"
+    
 class View(Tk):
     """
     UI
@@ -53,7 +68,9 @@ class View(Tk):
         )
         self.button.pack()
 
-        self.timer = Label(self, text=self.controller.model.seconds)
+        print(self.controller.get_current_time())
+
+        self.timer = Label(self, text=self.controller.get_current_time())
         self.timer.pack()
 
 
@@ -76,7 +93,7 @@ class Controller:
         print(self.model)
 
     def get_current_time(self) -> None:
-        current_time = self.model.get_current_seconds()
+        current_time = self.model.converter()
 
         return current_time
 
@@ -106,3 +123,6 @@ def converter(total_seconds) -> str:
     seconds = f"0{seconds}" if len(str(seconds)) == 1 else f"{seconds}"
 
     return f"{hours}:{minutes}:{seconds}"
+
+
+print(converter(3900))
