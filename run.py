@@ -16,6 +16,7 @@ if __name__ == "__main__":
     controller = Controller(model, None)
     view = View(controller)
     controller.view = view
+    controller.initialize_views()
 
     view.mainloop()
 

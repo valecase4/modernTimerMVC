@@ -3,9 +3,12 @@ class timerLabelController:
         self.model = model
         self.view = view
 
-        print("This is view for timerLabelController", self.view)
-
     def update_timer(self):
         seconds = self.model.seconds
 
-        self.view.timer.configure(text=seconds)
+        # self.view.timer.configure(text=seconds)
+
+        if self.view:
+            self.view.timer.configure(text=seconds)
+        else:
+            print("View does not exist")

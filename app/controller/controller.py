@@ -13,7 +13,11 @@ class Controller:
         self.reset_btn_controller = resetBtnController(self.model, self.view)
         self.timer_label_controller = timerLabelController(self.model, self.view)
 
-        print("This is view", self.view)
+    def initialize_views(self):
+        self.minutes_btn_controller.view = self.view
+        self.start_btn_controller.view = self.view
+        self.reset_btn_controller.view = self.view
+        self.timer_label_controller.view = self.view
 
     def on_click_minutes_btn(self, seconds):
         self.minutes_btn_controller.add_time(seconds)

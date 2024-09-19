@@ -11,11 +11,10 @@ class View(Tk):
 
         self.controller = controller
 
-        self.configure(
-            bg="#ffffff",
-            width=800,
-            height=400
-        )
+        self.geometry("800x400")
+        self.title("Timer")
+        self.configure(bg="#ffffff")
+        self.resizable(False, False)
 
         self.grid_propagate(False)
 
@@ -46,7 +45,7 @@ class View(Tk):
         self.reset_btn.configure(command=self.controller.on_click_reset_btn)
         self.reset_btn.grid(row=2, column=0, columnspan=5)
 
-        self.timer = Label(self, text="", font=("Arial", 30), bg="#ffffff")
+        self.timer = Label(self, text="00:00", font=("Arial", 30), bg="#ffffff")
         self.timer.grid(row=3, column=0, columnspan=5)
 
 

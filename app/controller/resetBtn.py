@@ -5,5 +5,3 @@ class resetBtnController:
 
     def reset_timer(self):
         self.model.reset()
-
-        print(self.view)

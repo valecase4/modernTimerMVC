@@ -13,9 +13,10 @@ class Model:
         return f"Timer is now {self.seconds}"
     
     def start(self):
-        self.is_running = True
+        if not self.is_running:
+            self.is_running = True
 
-        print(f"Timer is now running. {self.is_running}")
+            print(f"Timer is now running. {self.is_running}")
 
     def add_time(self, seconds):
         self.seconds += seconds
