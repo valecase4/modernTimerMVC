@@ -5,3 +5,9 @@ class startBtnController:
 
     def start_timer(self):
         self.model.start()
+
+    def enable(self):
+        self.view.start_btn.enable()
+
+    def disable(self):
+        self.view.start_btn.disable()

@@ -32,7 +32,13 @@ class Model:
         self.is_running = False
 
         print(f"Timer has been stopped. {self.is_running}; {self.seconds}")
+    
+    def countdown(self):
+        if self.is_running:
+            if self.seconds > 0:
+                self.seconds -= 1
 
+                print(self.seconds)
     
 
         

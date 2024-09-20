@@ -29,14 +29,24 @@ class Controller:
     def on_click_start_btn(self):
         self.start_btn_controller.start_timer()
         self.minutes_btn_controller.disable()
+        self.start_btn_controller.disable()
+        self.reset_btn_controller.disable()
+        self.pause_btn_controller.enable()
+        self.timer_label_controller.update_timer()
+        self.timer_label_controller.start_countdown()
 
     def on_click_reset_btn(self):
         self.reset_btn_controller.reset_timer()
         self.timer_label_controller.update_timer()
         self.minutes_btn_controller.enable()
+        self.reset_btn_controller.disable()
+        self.start_btn_controller.enable()
 
     def on_click_pause_btn(self):
         self.pause_btn_controller.pause_timer()
+        self.pause_btn_controller.disable()
+        self.start_btn_controller.enable()
+        self.reset_btn_controller.enable()
 
     
 

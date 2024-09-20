@@ -6,4 +6,8 @@ class pauseBtnController:
     def pause_timer(self):
         self.model.pause()
 
-    
+    def enable(self):
+        self.view.pause_btn.enable()
+
+    def disable(self):
+        self.view.pause_btn.disable()

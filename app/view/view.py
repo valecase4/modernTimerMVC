@@ -1,5 +1,9 @@
 from tkinter import *
 from .buttons.minutesBtn import MinutesBtn
+from .buttons.startBtn import startBtn
+from .buttons.resetBtn import resetBtn
+from .buttons.pauseBtn import pauseBtn
+from .timerLabel import timerLabel
 
 class View(Tk):
     """
@@ -43,19 +47,16 @@ class View(Tk):
                              self.twenty_min_btn, 
                              self.sixty_min_btn]
 
-        self.start_btn = Button(self, text="START", font=("Arial", 30))
-        self.start_btn.configure(command=self.controller.on_click_start_btn)
+        self.start_btn = startBtn(self, self.controller)
         self.start_btn.grid(row=1, column=1)
 
-        self.pause_btn = Button(self, text="PAUSE", bg="orange", fg="#ffffff", font=("Arial", 30))
-        self.pause_btn.configure(command=self.controller.on_click_pause_btn)
+        self.pause_btn = pauseBtn(self, self.controller)
         self.pause_btn.grid(row=1, column=3)
 
-        self.reset_btn = Button(self, text="RESET", font=("Arial", 30), bg="red", fg="#ffffff")
-        self.reset_btn.configure(command=self.controller.on_click_reset_btn)
+        self.reset_btn = resetBtn(self, self.controller)
         self.reset_btn.grid(row=2, column=0, columnspan=5)
 
-        self.timer = Label(self, text=self.controller.model.seconds, font=("Arial", 30), bg="#ffffff")
+        self.timer = timerLabel(self, self.controller)
         self.timer.grid(row=3, column=0, columnspan=5)
 
 
