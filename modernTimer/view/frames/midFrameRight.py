@@ -1,4 +1,5 @@
 from tkinter import *
+from ..canvas.timerCanvas import timerCanvas
 
 class midFrameRight(Frame):
     """
@@ -17,6 +18,9 @@ class midFrameRight(Frame):
             height=380,
             bg="#184d6c"
         )
+
+        self.timer_canvas = timerCanvas(self)
+        self.timer_canvas.pack()
 
     def grid(self, *args, **kwargs) -> None:
         """
