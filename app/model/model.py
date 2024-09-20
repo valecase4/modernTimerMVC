@@ -6,7 +6,7 @@ class Model:
     """
 
     def __init__(self):
-        self.seconds = 60
+        self.seconds = 0
         self.is_running = False
 
     def __repr__(self) -> str:
@@ -37,6 +37,8 @@ class Model:
         if self.is_running:
             if self.seconds > 0:
                 self.seconds -= 1
+            else:
+                self.reset()
 
                 print(self.seconds)
     
