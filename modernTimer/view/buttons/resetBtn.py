@@ -5,10 +5,11 @@ class resetBtn(Canvas):
     Reset button that resets timer when clicked
     """
 
-    def __init__(self, master) -> None:
+    def __init__(self, master, controller) -> None:
         super().__init__(master)
 
         self.master = master
+        self.controller = controller
 
         self.configure(
             width=190,
@@ -23,6 +24,7 @@ class resetBtn(Canvas):
 
         self.bind("<Enter>", lambda e : self.on_enter(e))
         self.bind("<Leave>", lambda e : self.on_leave(e))
+        self.bind("<Button>", lambda e : self.on_click(e))
 
     def grid(self, *args, **kwargs) -> None:
         """
@@ -63,3 +65,10 @@ class resetBtn(Canvas):
 
         self.itemconfig(self.text, fill="#e1e1e1", font=("Arial", 15, "normal"))
         self.coords(self.text, 95, 25)
+
+    def on_click(self, event) -> None:
+        """
+        Call on_click_reset_btn() defined in controller
+        """
+
+        self.controller.on_click_reset_btn()

@@ -7,10 +7,11 @@ class midFrameLeft(Frame):
     Mid Frame Left: displaying the flow of time and containing reset button
     """
 
-    def __init__(self, master) -> None:
+    def __init__(self, master, controller) -> None:
         super().__init__(master)
 
         self.master = master
+        self.controller = controller
 
         self.grid_propagate(False)
 
@@ -32,7 +33,7 @@ class midFrameLeft(Frame):
         self.timer = Timer(self)
         self.timer.grid()
 
-        self.reset_btn = resetBtn(self)
+        self.reset_btn = resetBtn(self, self.controller)
         self.reset_btn.grid()
 
         self.configure(

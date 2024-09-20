@@ -6,10 +6,11 @@ class topFrame(Frame):
     Top Frame containing some buttons: 1 mins, 5 mins, 10 mins, 20 mins, 60 mins 
     """
 
-    def __init__(self, master) -> None:
+    def __init__(self, master, controller) -> None:
         super().__init__(master)
 
         self.master = master
+        self.controller = controller
 
         self.grid_propagate(False)
         self.grid_rowconfigure(0, weight=1)

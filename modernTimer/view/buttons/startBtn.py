@@ -5,10 +5,11 @@ class startBtn(Canvas):
     Start button: when clicked, timer starts
     """
 
-    def __init__(self, master) -> None:
+    def __init__(self, master, controller) -> None:
         super().__init__(master)
 
         self.master = master
+        self.controller = controller
 
         self.configure(
             width=60,
@@ -25,6 +26,7 @@ class startBtn(Canvas):
 
         self.bind("<Enter>", lambda e : self.on_enter(e))
         self.bind("<Leave>", lambda e : self.on_leave(e))
+        self.bind("<Button>", lambda e : self.on_click(e))
 
     def pack(self, *args, **kwargs) -> None:
         """
@@ -53,3 +55,10 @@ class startBtn(Canvas):
         self.configure(
             background="#303030"
         )
+
+    def on_click(self, event) -> None:
+        """
+        Call on_click_start_btn() defined in controller
+        """
+
+        self.controller.on_click_start_btn()

@@ -7,10 +7,11 @@ class mainFrame(Frame):
     Main frame: same size of root window
     """
 
-    def __init__(self, master) -> None:
+    def __init__(self, master, controller) -> None:
         super().__init__(master)
 
         self.master = master
+        self.controller = controller
 
         self.configure(
             width=800,
@@ -18,10 +19,10 @@ class mainFrame(Frame):
             bg="#ffffff"
         )
 
-        self.top_frame = topFrame(self)
+        self.top_frame = topFrame(self, self.controller)
         self.top_frame.pack()
 
-        self.mid_frame = midFrame(self)
+        self.mid_frame = midFrame(self, self.controller)
         self.mid_frame.pack()
 
     def pack(self, *args, **kwargs) -> None:
