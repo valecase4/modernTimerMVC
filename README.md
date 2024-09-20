@@ -1,3 +1,7 @@
 # Modern Timer in Tkinter Python
 
-## Modern Timer built using MVC Design Pattern
+## Approach: MVC Design Pattern
+
+### View
+
+View is divided into different components.
