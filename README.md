@@ -4,4 +4,5 @@
 
 ### View
 
-View is divided into different components.
+View is divided into different components. 
+Look at design.jpg to understand better how the view has been organized.
