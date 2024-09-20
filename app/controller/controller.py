@@ -3,6 +3,7 @@ from .startBtn import startBtnController
 from .resetBtn import resetBtnController
 from .timerLabel import timerLabelController
 from .pauseBtn import pauseBtnController
+from .timerCanvas import timerCanvasController
 
 class Controller:
     def __init__(self, model, view):
@@ -14,6 +15,7 @@ class Controller:
         self.reset_btn_controller = resetBtnController(self.model, self.view)
         self.timer_label_controller = timerLabelController(self, self.model, self.view)
         self.pause_btn_controller = pauseBtnController(self.model, self.view)
+        self.timer_canvas_controller = timerCanvasController(self, self.model, self.view)
 
     def initialize_views(self):
         self.minutes_btn_controller.view = self.view
@@ -21,6 +23,7 @@ class Controller:
         self.reset_btn_controller.view = self.view
         self.timer_label_controller.view = self.view
         self.pause_btn_controller.view = self.view
+        self.timer_canvas_controller.view = self.view
 
     def on_click_minutes_btn(self, seconds):
         self.minutes_btn_controller.add_time(seconds)
@@ -35,6 +38,7 @@ class Controller:
             self.pause_btn_controller.enable()
             self.timer_label_controller.update_timer()
             self.timer_label_controller.start_countdown()
+            self.timer_canvas_controller.start_countdown()
         else:
             print("Add seconds please.")
 
@@ -45,6 +49,7 @@ class Controller:
         self.reset_btn_controller.disable()
         self.start_btn_controller.enable()
         self.timer_label_controller.stop_countdown()
+        self.timer_canvas_controller.stop_countdown()
 
     def on_click_pause_btn(self):
         self.pause_btn_controller.pause_timer()
@@ -52,6 +57,7 @@ class Controller:
         self.start_btn_controller.enable()
         self.reset_btn_controller.enable()
         self.timer_label_controller.stop_countdown()
+        self.timer_canvas_controller.stop_countdown()
 
     def on_end_timer(self):
         if self.model.seconds == 0:

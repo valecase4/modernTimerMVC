@@ -4,3 +4,8 @@ Scripts/
 __pycache__/
 
 *.cfg
+
+app/
+
+app_2.py
+app.py

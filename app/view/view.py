@@ -4,6 +4,7 @@ from .buttons.startBtn import startBtn
 from .buttons.resetBtn import resetBtn
 from .buttons.pauseBtn import pauseBtn
 from .timerLabel import timerLabel
+from .timerCanvas import timerCanvas
 
 class View(Tk):
     """
@@ -15,10 +16,10 @@ class View(Tk):
 
         self.controller = controller
 
-        self.geometry("800x400")
+        self.geometry("1200x700+10+10")
         self.title("Timer")
         self.configure(bg="#ffffff")
-        self.resizable(False, False)
+        # self.resizable(False, False)
 
         self.grid_propagate(False)
 
@@ -54,10 +55,14 @@ class View(Tk):
         self.pause_btn.grid(row=1, column=3)
 
         self.reset_btn = resetBtn(self, self.controller)
-        self.reset_btn.grid(row=2, column=0, columnspan=5)
+        self.reset_btn.grid(row=1, column=2)
 
         self.timer = timerLabel(self, self.controller)
         self.timer.grid(row=3, column=0, columnspan=5)
+
+        self.timer_canvas = timerCanvas(self, self.controller)
+        self.timer_canvas.grid(row=2, column=0)
+
 
 
 
