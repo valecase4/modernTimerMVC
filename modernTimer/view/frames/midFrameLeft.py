@@ -5,7 +5,7 @@ class midFrameLeft(Frame):
     Mid Frame Left: displaying the flow of time and containing reset button
     """
 
-    def __init__(self, master):
+    def __init__(self, master) -> None:
         super().__init__(master)
 
         self.master = master
@@ -16,7 +16,7 @@ class midFrameLeft(Frame):
             bg="#000000"
         )
 
-    def grid(self, *args, **kwargs):
+    def grid(self, *args, **kwargs) -> None:
         """
         Override grid method
         """

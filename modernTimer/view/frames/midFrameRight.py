@@ -5,7 +5,7 @@ class midFrameRight(Frame):
     Mid Frame Right: displaying the flow of time in timer canvas and containing start and pause buttons
     """
 
-    def __init__(self, master):
+    def __init__(self, master) -> None:
         super().__init__(master)
 
         self.master = master
@@ -16,7 +16,7 @@ class midFrameRight(Frame):
             bg="#184d6c"
         )
 
-    def grid(self, *args, **kwargs):
+    def grid(self, *args, **kwargs) -> None:
         """
         Override grid method
         """

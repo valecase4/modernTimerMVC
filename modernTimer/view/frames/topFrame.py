@@ -1,4 +1,5 @@
 from tkinter import *
+from ..buttons.minuteBtn import minuteBtn
 
 class topFrame(Frame):
     """
@@ -9,6 +10,26 @@ class topFrame(Frame):
         super().__init__(master)
 
         self.master = master
+
+        self.grid_propagate(False)
+        self.grid_rowconfigure(0, weight=1)
+        for i in range(5):
+            self.grid_rowconfigure(i, weight=1)
+
+        self.btn_1 = minuteBtn(self, text="1 mins")
+        self.btn_1.grid(row=0, column=0)
+
+        self.btn_2 = minuteBtn(self, text="5 mins")
+        self.btn_2.grid(row=0, column=1)
+
+        self.btn_3 = minuteBtn(self, text="10 mins")
+        self.btn_3.grid(row=0, column=2)
+
+        self.btn_4 = minuteBtn(self, text="20 mins")
+        self.btn_4.grid(row=0, column=3)
+
+        self.btn_5 = minuteBtn(self, text="60 mins")
+        self.btn_5.grid(row=0, column=4)
 
         self.configure(
             width=800,
