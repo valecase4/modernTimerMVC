@@ -10,6 +10,8 @@ class midFrameRight(Frame):
 
         self.master = master
 
+        self.grid_propagate(False)
+
         self.configure(
             width=380,
             height=380,
