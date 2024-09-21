@@ -30,7 +30,7 @@ class midFrameLeft(Frame):
               bg="#000000", 
               font=("Arial", 16, "bold")).grid(row=0, column=0, sticky="nw", padx=30, pady=(20, 0))
         
-        self.timer = Timer(self)
+        self.timer = Timer(self, self.controller)
         self.timer.grid()
 
         self.reset_btn = resetBtn(self, self.controller)

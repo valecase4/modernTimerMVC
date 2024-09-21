@@ -11,6 +11,10 @@ class Controller:
         self.model = model
         self.view = view
 
+        self.seconds = self.model.seconds
+        self.is_running = self.model.is_running
+        self.time_format = self.model.time_format
+
         self.start_btn_controller = startBtnController(self.model, self.view)
         self.pause_btn_controller = pauseBtnController(self.model, self.view)
         self.reset_btn_controller = resetBtnController(self.model, self.view)
@@ -20,19 +24,19 @@ class Controller:
         Actions to perform when start button is clicked
         """
 
-        self.start_btn_controller.test()
+        self.start_btn_controller.test() # test
 
     def on_click_pause_btn(self) -> None:
         """
         Actions to perform when pause button is clicked
         """
 
-        self.pause_btn_controller.test()
+        self.pause_btn_controller.test() # test
 
     def on_click_reset_btn(self) -> None:
         """
         Actions to perform when reset button is clicked
         """
 
-        self.reset_btn_controller.test()
+        self.reset_btn_controller.test() # test
 

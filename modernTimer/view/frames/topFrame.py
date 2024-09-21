@@ -17,19 +17,19 @@ class topFrame(Frame):
         for i in range(5):
             self.grid_rowconfigure(i, weight=1)
 
-        self.btn_1 = minuteBtn(self, text="1 mins")
+        self.btn_1 = minuteBtn(self, self.controller, "1 mins", 60)
         self.btn_1.grid(row=0, column=0)
 
-        self.btn_2 = minuteBtn(self, text="5 mins")
+        self.btn_2 = minuteBtn(self, self.controller, "5 mins", 300)
         self.btn_2.grid(row=0, column=1)
 
-        self.btn_3 = minuteBtn(self, text="10 mins")
+        self.btn_3 = minuteBtn(self, self.controller, "10 mins", 600)
         self.btn_3.grid(row=0, column=2)
 
-        self.btn_4 = minuteBtn(self, text="20 mins")
+        self.btn_4 = minuteBtn(self, self.controller, "20 mins", 1200)
         self.btn_4.grid(row=0, column=3)
 
-        self.btn_5 = minuteBtn(self, text="60 mins")
+        self.btn_5 = minuteBtn(self, self.controller, "60 mins", 3600)
         self.btn_5.grid(row=0, column=4)
 
         self.configure(

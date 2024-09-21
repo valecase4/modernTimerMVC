@@ -5,11 +5,13 @@ class minuteBtn(Canvas):
     Minute Btn: add time to the timer when clicked
     """
 
-    def __init__(self, master, text: str) -> None:
+    def __init__(self, master, controller, text: str, value: int) -> None:
         super().__init__(master)
 
         self.master = master
+        self.controller = controller
         self.text = text
+        self.value = value
 
         self.configure(
             width=100,

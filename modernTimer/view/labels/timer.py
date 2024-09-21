@@ -5,13 +5,14 @@ class Timer(Label):
     Label showing the flow of time
     """
 
-    def __init__(self, master) -> None:
+    def __init__(self, master, controller) -> None:
         super().__init__(master)
 
         self.master = master
+        self.controller = controller
 
         self.configure(
-            text="15:00",
+            text=self.controller.time_format,
             bg="#000000",
             fg="#ffffff",
             font=("Arial", 56, "normal"),
