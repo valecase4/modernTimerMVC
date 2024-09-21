@@ -26,6 +26,7 @@ class minuteBtn(Canvas):
 
         self.bind("<Enter>", lambda e : self.on_enter(e))
         self.bind("<Leave>", lambda e : self.on_leave(e))
+        self.bind("<Button>", lambda e : self.on_click(e))
 
     def grid(self, *args, **kwargs) -> None:
         """
@@ -58,5 +59,12 @@ class minuteBtn(Canvas):
         )
 
         self.itemconfig(self.canvas_text, fill="#e8e8ea")
+
+    def on_click(self, event) -> None:
+        """
+        Call on_click_minute_btn() defined in controller
+        """
+
+        self.controller.on_click_minute_btn(self.value)
 
 

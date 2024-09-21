@@ -25,11 +25,10 @@ class Model:
         """
         Add time to the timer
         """
+        
+        self.seconds += seconds
 
-        if self.is_running:
-            self.seconds += seconds
-
-        print(f"Added {self.seconds}.")
+        print(f"Added {seconds}. New value: {self.seconds}")
 
     def reset(self) -> None:
         """
@@ -49,4 +48,13 @@ class Model:
         time_format = converter(total_seconds)
 
         return time_format
+    
+    def get_seconds(self) -> int:
+        """
+        Get the number of seconds at a specific time
+        :return: total seconds
+        """
+
+        return self.seconds
+
         

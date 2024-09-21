@@ -7,4 +7,6 @@ if __name__ == '__main__':
     controller = Controller(model, None)
     app = View(controller)
     controller.view = app
+    print("\nNew view component for controller:\n")
+    controller.initialize_view()
     app.mainloop()

@@ -1,0 +1,27 @@
+class timerLabelController:
+    """
+    Controller component for the label showing the flow of time
+    """
+
+    def __init__(self, model, view) -> None:
+        self.model = model
+        self.view = view
+
+        self.timer = self.view.main_frame.mid_frame.mid_frame_left.timer
+
+    def test(self) -> None:
+        """
+        Implemented for testing: timer is updated when a minute button is clicked (testing)
+        """
+
+        self.timer.update_test()
+
+    def update(self, new_value) -> None:
+        """
+        Timer is updated when a minute button is clicked
+        Example: 5 mins is clicked -> timer label becomes 00:05:00
+
+        :param new_value: new text to display in the timer label
+        """
+
+        self.timer.update(new_value)

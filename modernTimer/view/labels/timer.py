@@ -30,4 +30,21 @@ class Timer(Label):
         kwargs["padx"] = 25
 
         return super().grid(*args, **kwargs)
+    
+    def update_test(self) -> None:
+        """
+        Update timer view when a minute button is clicked (testing)
+        """
 
+        print("Timer updated")
+
+    def update(self, new_value) -> None:
+        """
+        Update timer view when a minute button is clicked
+
+        :param new_value: new text to display in the timer label
+        """
+
+        self.configure(
+            text=new_value
+        )

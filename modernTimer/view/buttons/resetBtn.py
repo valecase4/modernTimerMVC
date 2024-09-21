@@ -20,7 +20,7 @@ class resetBtn(Canvas):
             cursor="hand2"
         )
 
-        self.text = self.create_text(95, 25, text="Stop", fill="#e1e1e1", font=("Arial", 15))
+        self.text = self.create_text(95, 25, text="Reset", fill="#e1e1e1", font=("Arial", 15))
 
         self.bind("<Enter>", lambda e : self.on_enter(e))
         self.bind("<Leave>", lambda e : self.on_leave(e))
