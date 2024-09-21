@@ -73,6 +73,9 @@ class Controller:
         """
 
         self.reset_btn_controller.test() # test
+        self.model.reset()
+        self.update_timer()
+        self.reset_btn_controller.disable()
 
     def on_click_minute_btn(self, value) -> None:
         """
@@ -82,6 +85,7 @@ class Controller:
         self.minute_btn_controller.test(value) # test
         self.model.add_time(value)
         self.update_timer()
+        self.reset_btn_controller.enable()
         # self.timer_label_controller.test()
 
     def update_timer(self) -> None:

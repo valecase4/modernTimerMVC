@@ -26,6 +26,8 @@ class resetBtn(Canvas):
         self.bind("<Leave>", lambda e : self.on_leave(e))
         self.bind("<Button>", lambda e : self.on_click(e))
 
+        self.disable() # in the initial state, this button is disabled
+
     def grid(self, *args, **kwargs) -> None:
         """
         Override grid method
@@ -72,3 +74,33 @@ class resetBtn(Canvas):
         """
 
         self.controller.on_click_reset_btn()
+
+    def disable(self) -> None:
+        """
+        Disable button
+        """
+
+        self.configure(
+            bg="#b0b0b0",
+        )
+
+        self.itemconfig(self.text, fill="#6e6d6d")
+
+        self.unbind("<Enter>")
+        self.unbind("<Leave>")
+        self.unbind("<Button>")
+
+    def enable(self) -> None:
+        """
+        Enable button
+        """
+
+        self.configure(
+            bg="#303030"
+        )
+
+        self.itemconfig(self.text, fill="#e1e1e1")
+
+        self.bind("<Enter>", lambda e : self.on_enter(e))
+        self.bind("<Leave>", lambda e : self.on_leave(e))
+        self.bind("<Button>", lambda e : self.on_click(e))
