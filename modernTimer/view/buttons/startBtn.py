@@ -62,3 +62,33 @@ class startBtn(Canvas):
         """
 
         self.controller.on_click_start_btn()
+
+    def disable(self) -> None:
+        """
+        Disable button
+        """
+
+        self.config(
+            bg="#b0b0b0"
+        )
+        
+        self.itemconfig(self.icon, fill="#6e6d6d")
+
+        self.unbind("<Enter>")
+        self.unbind("<Leave>")
+        self.unbind("<Button>")
+
+    def enable(self) -> None:
+        """
+        Enable button
+        """
+
+        self.configure(
+            bg="#303030"
+        )
+
+        self.itemconfig(self.icon, fill="#ffffff")
+
+        self.bind("<Enter>", lambda e : self.on_enter(e))
+        self.bind("<Leave>", lambda e : self.on_leave(e))
+        self.bind("<Button>", lambda e : self.on_click(e))

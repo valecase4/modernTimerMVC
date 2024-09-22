@@ -3,6 +3,8 @@ from .pauseBtn import pauseBtnController
 from .resetBtn import resetBtnController
 from .minuteBtn import minuteBtnController
 from .timerLabel import timerLabelController
+from tkinter import *
+from tkinter import messagebox
 
 class Controller:
     """
@@ -41,7 +43,22 @@ class Controller:
 
         self.seconds = self.model.get_seconds()
 
+        print(f"From controller --> Timer: {self.seconds}")
+
         return self.seconds
+    
+    def get_state(self) -> bool:
+        """
+        Get state from model
+
+        :return: boolean value, True if timer is running, False otherwise
+        """
+
+        self.is_running = self.model.get_state()
+
+        print(f"From controller --> Running: {self.is_running}")
+
+        return self.is_running
     
     def get_format(self) -> str:
         """
@@ -56,9 +73,26 @@ class Controller:
     def on_click_start_btn(self) -> None:
         """
         Actions to perform when start button is clicked
+        Timer doesn't start if timer seconds are 0
         """
 
-        self.start_btn_controller.test() # test
+        seconds = self.get_seconds()
+
+        if seconds > 0:
+            print("\nTimer is ready to run.\n") # test
+            
+            self.start_btn_controller.test() # test
+            self.model.run_timer()
+            self.get_state()
+
+            # manage buttons behavior
+
+            self.start_btn_controller.disable()
+        
+        elif seconds == 0:
+            print("\nAdd seconds to start the timer.\n")
+            messagebox.showinfo(title="Invalid Timer Setting",
+                                message="Please set a valid tiem before starting the timer.")
 
     def on_click_pause_btn(self) -> None:
         """
@@ -75,6 +109,12 @@ class Controller:
         self.reset_btn_controller.test() # test
         self.model.reset()
         self.update_timer()
+        self.get_seconds()
+        self.get_state()
+
+        # manage buttons behavior
+
+        self.start_btn_controller.enable()
         self.reset_btn_controller.disable()
 
     def on_click_minute_btn(self, value) -> None:

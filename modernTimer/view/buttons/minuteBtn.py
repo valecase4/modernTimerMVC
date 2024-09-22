@@ -67,4 +67,19 @@ class minuteBtn(Canvas):
 
         self.controller.on_click_minute_btn(self.value)
 
+    def disable(self) -> None:
+        """
+        Disable button
+        """
+
+        self.configure(
+            bg="#b0b0b0"
+        )
+
+        self.itemconfig(self.canvas_text, fill="#6e6d6d")
+
+        self.unbind("<Enter>")
+        self.unbind("<Leave>")
+        self.unbind("<Button>")
+
 

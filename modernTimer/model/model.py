@@ -19,7 +19,7 @@ class Model:
 
         self.is_running = True
         
-        print(f"\nRunning: {self.is_running}.\n")
+        print(f"\nFrom Model --> Running: {self.is_running}.\n")
 
     def add_time(self, seconds) -> None:
         """
@@ -38,7 +38,8 @@ class Model:
         self.seconds = 0
         self.is_running = False
 
-        print(f"Reset timer: {self.seconds}")
+        print(f"From Model --> Running: {self.is_running}")
+        print(f"From Model --> Reset timer: {self.seconds}")
 
     def converter(self, total_seconds: int) -> str:
         """
@@ -56,5 +57,13 @@ class Model:
         """
 
         return self.seconds
+    
+    def get_state(self) -> bool:
+        """
+        Get the current state of the timer at a specific time
+        :return: boolean value (True if timer is running, False otherwise)
+        """
+
+        return self.is_running
 
         

@@ -32,6 +32,8 @@ class topFrame(Frame):
         self.btn_5 = minuteBtn(self, self.controller, "60 mins", 3600)
         self.btn_5.grid(row=0, column=4)
 
+        self.all_minute_btns = [self.btn_1, self.btn_2, self.btn_3, self.btn_4, self.btn_5] # for controller component
+
         self.configure(
             width=800,
             height=100,

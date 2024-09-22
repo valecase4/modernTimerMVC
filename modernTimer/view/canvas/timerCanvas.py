@@ -28,7 +28,7 @@ class timerCanvas(Canvas):
         )
 
         self.timer_canvas = self.create_arc(
-            75, 25, 305, 255, start=90, extent=300, fill="#0cdcf8", outline="#0cdcf8", width=25, style=ARC
+            75, 25, 305, 255, start=90, extent=359.99, fill="#0cdcf8", outline="#0cdcf8", width=25, style=ARC
         )
 
         self.start_btn = startBtn(self, self.controller)
