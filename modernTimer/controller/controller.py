@@ -101,6 +101,10 @@ class Controller:
                 self.get_state()
                 self.get_seconds()
 
+                # show pop-up to display the end of the timer
+
+                messagebox.showinfo("End", message="Time is up.")
+
                 # manage buttons behavior
 
                 self.start_btn_controller.enable()
