@@ -14,9 +14,9 @@ class resetBtnController:
         Implemented for testing the click on the reset button
         """
 
-        print("\n")
-        print("Button reset clicked")
-        print("\n")
+        # print("\n")
+        # print("Button reset clicked")
+        # print("\n")
 
     def disable(self) -> None:
         """

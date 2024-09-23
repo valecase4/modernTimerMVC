@@ -14,9 +14,9 @@ class pauseBtnController:
         Implemented for testing the click on the start button
         """
 
-        print("\n")
-        print("Button pause clicked")
-        print("\n")
+        # print("\n")
+        # print("Button pause clicked")
+        # print("\n")
 
     def disable(self) -> None:
         """

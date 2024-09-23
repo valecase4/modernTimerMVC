@@ -15,7 +15,7 @@ class Controller:
         self.model = model
         self.view = view
 
-        print(f"\nView for controller component {self.view}\n") # test
+        # print(f"\nView for controller component {self.view}\n") # test
 
         self.seconds = self.model.seconds
         self.is_running = self.model.is_running
@@ -43,7 +43,7 @@ class Controller:
 
         self.seconds = self.model.get_seconds()
 
-        print(f"From controller --> Timer: {self.seconds}")
+        # print(f"From controller --> Timer: {self.seconds}")
 
         return self.seconds
     
@@ -56,7 +56,7 @@ class Controller:
 
         self.is_running = self.model.get_state()
 
-        print(f"From controller --> Running: {self.is_running}")
+        # print(f"From controller --> Running: {self.is_running}")
 
         return self.is_running
     
@@ -121,7 +121,7 @@ class Controller:
         self.get_seconds()
 
         if self.seconds > 0:
-            print("\nTimer is ready to run.\n") # test
+            # print("\nTimer is ready to run.\n") # test
 
             if not self.is_running:
                 self.model.run_timer()
@@ -132,7 +132,7 @@ class Controller:
 
                 self.get_state()
 
-                print(f"From controller: new state running {self.is_running}")
+                # print(f"From controller: new state running {self.is_running}")
 
                 self.timer_label_controller.configure_after_id(func=self.countdown)
 
@@ -144,7 +144,7 @@ class Controller:
                 self.minute_btn_controller.disable()
         
         elif self.seconds == 0:
-            print("\nAdd seconds to start the timer.\n")
+            # print("\nAdd seconds to start the timer.\n")
             messagebox.showinfo(title="Invalid Timer Setting",
                                 message="Please set a valid tiem before starting the timer.")
 
@@ -158,7 +158,7 @@ class Controller:
         if self.is_running:
             self.model.pause_timer()
             self.get_state()
-            print(f"From controller: new state running {self.is_running}")
+            # print(f"From controller: new state running {self.is_running}")
             self.timer_label_controller.stop_after_id(self.countdown)
 
         # manage buttons behavior

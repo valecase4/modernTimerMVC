@@ -37,7 +37,7 @@ class Timer(Label):
         Update timer view when a minute button is clicked (testing)
         """
 
-        print("Timer updated")
+        # print("Timer updated")
 
     def update(self, new_value) -> None:
         """
@@ -57,7 +57,7 @@ class Timer(Label):
         :param func: function responsible for updating the timer (flow of time)
         """
 
-        print("\nUpdated after id for timer label.\n")
+        # print("\nUpdated after id for timer label.\n")
 
         self.after_id = self.after(1000, func)
 
@@ -68,12 +68,13 @@ class Timer(Label):
         :param func: function responsible for updating the timer (flow of time)
         """
 
-        print("\nStopped after id for timer label.\n")
+        # print("\nStopped after id for timer label.\n")
         
         if self.after_id:
             self.after_cancel(self.after_id)
             self.after_id = None
         else:
-            print(f"After id is {self.after_id}")
+            pass
+            # print(f"After id is {self.after_id}")
 
 

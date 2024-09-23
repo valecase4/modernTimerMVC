@@ -14,9 +14,9 @@ class minuteBtnController:
         Implemented for testing the click on the minutes buttons
         """
 
-        print("\n")
-        print(f"Minute button clicked {value}")
-        print("\n")
+        # print("\n")
+        # print(f"Minute button clicked {value}")
+        # print("\n")
 
     def disable(self) -> None:
         """

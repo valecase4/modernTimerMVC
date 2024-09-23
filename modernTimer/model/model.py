@@ -10,7 +10,7 @@ class Model:
         self.is_running = False
         self.time_format = self.converter(self.seconds)
 
-        print(f"Initial state: {self.seconds}, {self.is_running}.")
+        # print(f"Initial state: {self.seconds}, {self.is_running}.")
 
     def run_timer(self) -> None:
         """
@@ -19,7 +19,7 @@ class Model:
 
         self.is_running = True
         
-        print(f"\nFrom Model --> Running: {self.is_running}.\n")
+        # print(f"\nFrom Model --> Running: {self.is_running}.\n")
 
     def pause_timer(self) -> None:
         """
@@ -28,7 +28,7 @@ class Model:
 
         self.is_running = False
 
-        print(f"From model: timer is paused.")
+        # print(f"From model: timer is paused.")
     
 
     def add_time(self, seconds) -> None:
@@ -38,7 +38,7 @@ class Model:
         
         self.seconds += seconds
 
-        print(f"Added {seconds}. New value: {self.seconds}")
+        # print(f"Added {seconds}. New value: {self.seconds}")
 
     def reset(self) -> None:
         """
@@ -48,8 +48,8 @@ class Model:
         self.seconds = 0
         self.is_running = False
 
-        print(f"From Model --> Running: {self.is_running}")
-        print(f"From Model --> Reset timer: {self.seconds}")
+        # print(f"From Model --> Running: {self.is_running}")
+        # print(f"From Model --> Reset timer: {self.seconds}")
 
     def decrease(self) -> None:
         """
@@ -58,7 +58,7 @@ class Model:
 
         if self.seconds > 0:
             self.seconds -= 1
-            print(f"Seconds from model: {self.seconds}")
+            # print(f"Seconds from model: {self.seconds}")
 
 
     def converter(self, total_seconds: int) -> str:

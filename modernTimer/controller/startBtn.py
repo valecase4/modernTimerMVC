@@ -14,9 +14,9 @@ class startBtnController:
         Implemented for testing the click on the start button
         """
 
-        print("\n")
-        print("Button start clicked")
-        print("\n")
+        # print("\n")
+        # print("Button start clicked")
+        # print("\n")
 
     def disable(self) -> None:
         """
