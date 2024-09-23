@@ -10,6 +10,7 @@ class Timer(Label):
 
         self.master = master
         self.controller = controller
+        self.after_id = None
 
         self.configure(
             text=self.controller.time_format,
@@ -48,3 +49,32 @@ class Timer(Label):
         self.configure(
             text=new_value
         )
+
+    def configure_after_id(self, func) -> None:
+        """
+        After id manages the updates for the timer label
+
+        :param func: function responsible for updating the timer (flow of time)
+        """
+
+        print("\nUpdated after id for timer label.\n")
+
+        if not self.after_id:
+            self.after(1000, func)
+
+    def stop_after_id(self, func) -> None:
+        """
+        Stop after id: stop the flow of time
+
+        :param func: function responsible for updating the timer (flow of time)
+        """
+
+        print("\nStopped after id for timer label.\n")
+        
+        if self.after_id:
+            self.after_cancel(func)
+            self.after_id = None
+        else:
+            print(f"After id is {self.after_id}")
+
+

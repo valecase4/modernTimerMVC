@@ -70,6 +70,38 @@ class Controller:
 
         return time_format
 
+    def decrease(self) -> None:
+        """
+        decrease() method from model
+        """
+
+        self.model.decrease()
+
+    def countdown(self) -> None:
+        """
+        Countdown: flow of time for timer
+        """
+
+        if self.is_running:
+            if self.seconds > 0:
+                self.decrease()
+                self.get_seconds()
+                self.update_timer()
+
+                self.timer_label_controller.configure_after_id(func=self.countdown)
+
+            else:
+                self.model.reset()
+                self.get_state()
+                self.get_seconds()
+
+                # manage buttons behavior
+
+                self.start_btn_controller.enable()
+                self.pause_btn_controller.disable()
+                self.reset_btn_controller.enable()
+                self.minute_btn_controller.enable()
+
     def on_click_start_btn(self) -> None:
         """
         Actions to perform when start button is clicked
@@ -80,14 +112,20 @@ class Controller:
 
         if seconds > 0:
             print("\nTimer is ready to run.\n") # test
+
+            if not self.is_running:
+                self.model.run_timer()
             
             self.start_btn_controller.test() # test
-            self.model.run_timer()
             self.get_state()
+            self.timer_label_controller.configure_after_id(func=self.countdown)
 
             # manage buttons behavior
 
             self.start_btn_controller.disable()
+            self.pause_btn_controller.enable()
+            self.reset_btn_controller.disable()
+            self.minute_btn_controller.disable()
         
         elif seconds == 0:
             print("\nAdd seconds to start the timer.\n")
@@ -100,6 +138,17 @@ class Controller:
         """
 
         self.pause_btn_controller.test() # test
+
+        if self.is_running:
+            self.model.pause_timer()
+            self.get_state()
+            self.timer_label_controller.stop_after_id(self.countdown)
+
+        # manage buttons behavior
+
+        self.start_btn_controller.enable()
+        self.pause_btn_controller.disable()
+        self.reset_btn_controller.enable()
 
     def on_click_reset_btn(self) -> None:
         """
@@ -116,6 +165,7 @@ class Controller:
 
         self.start_btn_controller.enable()
         self.reset_btn_controller.disable()
+        self.minute_btn_controller.enable()
 
     def on_click_minute_btn(self, value) -> None:
         """

@@ -12,7 +12,7 @@ class timerCanvas(Canvas):
 
         self.master = master
         self.controller = controller
-
+        
         self.pack_propagate(False)
 
         self.configure(

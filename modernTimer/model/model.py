@@ -21,6 +21,16 @@ class Model:
         
         print(f"\nFrom Model --> Running: {self.is_running}.\n")
 
+    def pause_timer(self) -> None:
+        """
+        State of the timer: pause
+        """
+
+        self.is_running = False
+
+        print(f"From model: timer is paused.")
+    
+
     def add_time(self, seconds) -> None:
         """
         Add time to the timer
@@ -40,6 +50,16 @@ class Model:
 
         print(f"From Model --> Running: {self.is_running}")
         print(f"From Model --> Reset timer: {self.seconds}")
+
+    def decrease(self) -> None:
+        """
+        Decrease by 1 every second
+        """
+
+        if self.seconds > 0:
+            self.seconds -= 1
+            print(f"Seconds from model: {self.seconds}")
+
 
     def converter(self, total_seconds: int) -> str:
         """
