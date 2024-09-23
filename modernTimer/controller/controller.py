@@ -134,6 +134,7 @@ class Controller:
 
             else:
                 self.timer_canvas_controller.reset()
+                self.extent_decrement = 0
 
     def update_timer_canvas(self, decrement) -> None:
         """
@@ -167,7 +168,9 @@ class Controller:
         """
 
         self.get_seconds()
-        self.get_extent_decrement()
+
+        if self.extent_decrement == 0:
+            self.get_extent_decrement()
 
         if self.seconds > 0:
             # print("\nTimer is ready to run.\n") # test
@@ -230,6 +233,7 @@ class Controller:
         self.timer_canvas_controller.reset()
 
         self.timer_canvas_controller.stop_after_id()
+        self.extent_decrement = 0
 
         # update values
 
