@@ -125,12 +125,12 @@ class Controller:
 
             if not self.is_running:
                 self.model.run_timer()
-            
-                self.start_btn_controller.test() # test
 
                 # update values
 
                 self.get_state()
+            
+                # self.start_btn_controller.test() # test
 
                 # print(f"From controller: new state running {self.is_running}")
 
