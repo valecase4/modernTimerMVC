@@ -153,7 +153,7 @@ class Controller:
         Actions to perform when pause button is clicked
         """
 
-        self.pause_btn_controller.test() # test
+        # self.pause_btn_controller.test() # test
 
         if self.is_running:
             self.model.pause_timer()
@@ -172,7 +172,7 @@ class Controller:
         Actions to perform when reset button is clicked
         """
 
-        self.reset_btn_controller.test() # test
+        # self.reset_btn_controller.test() # test
         self.model.reset()
         self.update_timer()
         self.timer_label_controller.stop_after_id(self.countdown)
