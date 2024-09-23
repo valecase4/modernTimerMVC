@@ -35,12 +35,12 @@ class timerLabelController:
 
         self.timer.configure_after_id(func)
 
-    def stop_after_id(self, func) -> None:
+    def stop_after_id(self) -> None:
         """
         Stop timer.after_id. The flow of time is stopped when pause btn or reset button is clicked
 
         :param func: function responsible for updating the timer
         """
 
-        self.timer.stop_after_id(func)
+        self.timer.stop_after_id()
 

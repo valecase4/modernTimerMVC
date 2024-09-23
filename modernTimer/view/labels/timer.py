@@ -61,7 +61,7 @@ class Timer(Label):
 
         self.after_id = self.after(1000, func)
 
-    def stop_after_id(self, func) -> None:
+    def stop_after_id(self) -> None:
         """
         Stop after id: stop the flow of time
 

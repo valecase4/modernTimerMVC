@@ -12,6 +12,7 @@ class timerCanvas(Canvas):
 
         self.master = master
         self.controller = controller
+        self.after_id = None
         
         self.pack_propagate(False)
 
@@ -46,3 +47,47 @@ class timerCanvas(Canvas):
         kwargs["fill"] = "both"
 
         return super().pack(*args, **kwargs)
+    
+    def test(self) -> None:
+        """
+        Implemented for test
+        """
+
+        self.itemconfig(self.timer_canvas, extent=320)
+
+    def reset(self) -> None:
+        """
+        Reset to the initial state: extent = 359.99
+        """
+
+        self.itemconfig(self.timer_canvas, extent=359.99)
+
+    def update(self, decrement) -> None:
+        """
+        Updating timer canvas
+        """
+        current_extent = float(self.itemcget(self.timer_canvas, "extent"))
+        self.itemconfig(self.timer_canvas, extent=current_extent - decrement)
+
+    def configure_after_id(self, func) -> None:
+        """
+        Configure after id, that is responsible to update the canvas representing the flow of time
+
+        :param func: function responsible for updating the canvas
+        """
+
+        self.after_id = self.after(1000, func)
+
+    def stop_after_id(self) -> None:
+        """
+        Stop after_id. The flow of time is stopped when pause btn or reset button is clicked
+
+        :param func: function responsible for updating the canvas
+        """
+
+        if self.after_id:
+            self.after_cancel(self.after_id)
+            self.after_id = None
+
+
+

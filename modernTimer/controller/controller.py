@@ -3,6 +3,7 @@ from .pauseBtn import pauseBtnController
 from .resetBtn import resetBtnController
 from .minuteBtn import minuteBtnController
 from .timerLabel import timerLabelController
+from .timerCanvas import timerCanvasController
 from tkinter import *
 from tkinter import messagebox
 
@@ -20,6 +21,7 @@ class Controller:
         self.seconds = self.model.seconds
         self.is_running = self.model.is_running
         self.time_format = self.model.time_format
+        self.extent_decrement = 0
 
     def initialize_view(self) -> None:
         """
@@ -31,6 +33,7 @@ class Controller:
         self.reset_btn_controller = resetBtnController(self.model, self.view)
         self.minute_btn_controller = minuteBtnController(self.model, self.view)
         self.timer_label_controller = timerLabelController(self.model, self.view)
+        self.timer_canvas_controller = timerCanvasController(self.model, self.view)
 
         self.timer_label_controller.view = self.view
 
@@ -91,7 +94,10 @@ class Controller:
                 self.get_seconds()
 
                 self.update_timer()
+
                 self.timer_label_controller.configure_after_id(func=self.countdown)
+
+                # self.timer_canvas_controller.test()
 
             else:
                 self.model.reset()
@@ -112,6 +118,48 @@ class Controller:
                 self.reset_btn_controller.enable()
                 self.minute_btn_controller.enable()
 
+    def decrease_canvas(self) -> None:
+        """
+        Decrease extent of timer canvas
+        """
+
+        if self.is_running:
+            if self.seconds > 0:
+
+                print(self.extent_decrement)
+                
+                self.update_timer_canvas(decrement=self.extent_decrement)
+
+                self.timer_canvas_controller.configure_after_id(func=self.decrease_canvas)
+
+            else:
+                self.timer_canvas_controller.reset()
+
+    def update_timer_canvas(self, decrement) -> None:
+        """
+        Update timer canvas: arc displaying flow of time
+        """
+
+        self.timer_canvas_controller.update(decrement=decrement)
+
+    def get_extent_decrement(self) -> float:
+        """
+        Compute the increment for the extent in timer canvas
+        Example: if seconds are 60 --> every second the extent decrements by 6 degrees
+
+        360 / self.seconds
+
+        :return: float extent decrement
+        """
+
+        seconds = self.get_seconds()
+        if seconds != 0:
+            extent_decrement = float(360 / seconds)
+
+            self.extent_decrement = extent_decrement
+
+            return extent_decrement
+
     def on_click_start_btn(self) -> None:
         """
         Actions to perform when start button is clicked
@@ -119,6 +167,7 @@ class Controller:
         """
 
         self.get_seconds()
+        self.get_extent_decrement()
 
         if self.seconds > 0:
             # print("\nTimer is ready to run.\n") # test
@@ -135,6 +184,7 @@ class Controller:
                 # print(f"From controller: new state running {self.is_running}")
 
                 self.timer_label_controller.configure_after_id(func=self.countdown)
+                self.timer_canvas_controller.configure_after_id(func=self.decrease_canvas)
 
                 # manage buttons behavior
 
@@ -159,7 +209,8 @@ class Controller:
             self.model.pause_timer()
             self.get_state()
             # print(f"From controller: new state running {self.is_running}")
-            self.timer_label_controller.stop_after_id(self.countdown)
+            self.timer_label_controller.stop_after_id()
+            self.timer_canvas_controller.stop_after_id()
 
         # manage buttons behavior
 
@@ -175,7 +226,10 @@ class Controller:
         # self.reset_btn_controller.test() # test
         self.model.reset()
         self.update_timer()
-        self.timer_label_controller.stop_after_id(self.countdown)
+        self.timer_label_controller.stop_after_id()
+        self.timer_canvas_controller.reset()
+
+        self.timer_canvas_controller.stop_after_id()
 
         # update values
 
