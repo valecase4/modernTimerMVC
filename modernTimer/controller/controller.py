@@ -85,13 +85,19 @@ class Controller:
         if self.is_running:
             if self.seconds > 0:
                 self.decrease()
-                self.get_seconds()
-                self.update_timer()
 
+                # update seconds
+
+                self.get_seconds()
+
+                self.update_timer()
                 self.timer_label_controller.configure_after_id(func=self.countdown)
 
             else:
                 self.model.reset()
+
+                # update values
+
                 self.get_state()
                 self.get_seconds()
 
@@ -108,26 +114,32 @@ class Controller:
         Timer doesn't start if timer seconds are 0
         """
 
-        seconds = self.get_seconds()
+        self.get_seconds()
 
-        if seconds > 0:
+        if self.seconds > 0:
             print("\nTimer is ready to run.\n") # test
 
             if not self.is_running:
                 self.model.run_timer()
             
-            self.start_btn_controller.test() # test
-            self.get_state()
-            self.timer_label_controller.configure_after_id(func=self.countdown)
+                self.start_btn_controller.test() # test
 
-            # manage buttons behavior
+                # update values
 
-            self.start_btn_controller.disable()
-            self.pause_btn_controller.enable()
-            self.reset_btn_controller.disable()
-            self.minute_btn_controller.disable()
+                self.get_state()
+
+                print(f"From controller: new state running {self.is_running}")
+
+                self.timer_label_controller.configure_after_id(func=self.countdown)
+
+                # manage buttons behavior
+
+                self.start_btn_controller.disable()
+                self.pause_btn_controller.enable()
+                self.reset_btn_controller.disable()
+                self.minute_btn_controller.disable()
         
-        elif seconds == 0:
+        elif self.seconds == 0:
             print("\nAdd seconds to start the timer.\n")
             messagebox.showinfo(title="Invalid Timer Setting",
                                 message="Please set a valid tiem before starting the timer.")
@@ -142,6 +154,7 @@ class Controller:
         if self.is_running:
             self.model.pause_timer()
             self.get_state()
+            print(f"From controller: new state running {self.is_running}")
             self.timer_label_controller.stop_after_id(self.countdown)
 
         # manage buttons behavior
@@ -158,6 +171,10 @@ class Controller:
         self.reset_btn_controller.test() # test
         self.model.reset()
         self.update_timer()
+        self.timer_label_controller.stop_after_id(self.countdown)
+
+        # update values
+
         self.get_seconds()
         self.get_state()
 
@@ -175,8 +192,11 @@ class Controller:
         self.minute_btn_controller.test(value) # test
         self.model.add_time(value)
         self.update_timer()
-        self.reset_btn_controller.enable()
-        # self.timer_label_controller.test()
+        self.timer_label_controller.test()
+
+        # manage buttons behavior
+
+        self.reset_btn_controller.enable() 
 
     def update_timer(self) -> None:
         """

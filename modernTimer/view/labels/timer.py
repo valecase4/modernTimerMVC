@@ -59,8 +59,7 @@ class Timer(Label):
 
         print("\nUpdated after id for timer label.\n")
 
-        if not self.after_id:
-            self.after(1000, func)
+        self.after_id = self.after(1000, func)
 
     def stop_after_id(self, func) -> None:
         """
@@ -72,7 +71,7 @@ class Timer(Label):
         print("\nStopped after id for timer label.\n")
         
         if self.after_id:
-            self.after_cancel(func)
+            self.after_cancel(self.after_id)
             self.after_id = None
         else:
             print(f"After id is {self.after_id}")
